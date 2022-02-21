@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container{
+        display: flex;
+
+      } 
+      #sidebar{
+        flex: 3;
+        border: 1px solid black;
+      }
+      #main{
+        flex: 7;
+        border: 2px solid black;
+        display: grid;
+        grid-gap: 20px;
+      }
+      div{
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+    <div id="sidebar">
+
+    </div>
+    <div id="main">
+      <!--No need to add sidebar here, directly display search results here only-->
+
+      <!-- show headline, description and image -->
+    </div>
+  </div>
+  </body>
+</html>
+
+<script type="module">
+  import sidebar from "./components/sidebar.js"
+document.getElementById("sidebar").innerHTML=sidebar()
+import storeSearchterm from "./scripts/search.js"
+storeSearchterm()
+</script>

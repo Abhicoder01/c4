@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      #container{
+        display: flex;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPuFhx2CC1r5o5Lct_Nb7eKbUx4b8bHE2fww&usqp=CAU");
+
+        background-size: contain;
+      } 
+      #sidebar{
+        flex: 3;
+        border: 1px solid black;
+      }
+      #main{
+        flex: 7;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      border: 1px solid black;
+      }
+      #main>div{
+        border: 2px solid red;
+      }
+      #name{
+        border: hidden;
+        text-decoration:underline;
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append the horizontal navbar(sidebar) here only-->
+        
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append top headlines from india here only-->
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+import sidebar from "./components/sidebar.js"
+document.getElementById("sidebar").innerHTML=sidebar()
+import { apiCall, appendArticles } from "./scripts/main.js"
+let main =document.getElementById("main")
+let images=await apiCall("https://shrouded-earth-23381.herokuapp.com/api/headlines/india")
+console.log(images)
+appendArticles(images,main)
+let input=document.getElementById("in")
+input.addEventListener("keypress",(e)=>{
+  if(e.key=="Enter"){
+    let value=document.getElementById("in").value
+    localStorage.setItem("data",value)
+    window.location.href="search.html"
+  }
+})
+document.getElementById("name").addEventListener("click",grant)
+function grant(){
+  window.location.href="news.html"
+}
+</script>
